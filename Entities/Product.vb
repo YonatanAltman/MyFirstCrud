@@ -29,4 +29,9 @@
         Me.NotImportentData = "Do Not Display!"
 
     End Sub
+
+    Public Overrides Function ToString() As String
+        Return String.Format("ID : {0}  -----|Name {1} ----- |Price ${2} ", Me.CatalogID, Me.Name, Me.Price)
+    End Function
+
 End Class
