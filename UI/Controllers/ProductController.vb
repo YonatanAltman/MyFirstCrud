@@ -12,5 +12,12 @@ Namespace Controllers
 
             Return View(products)
         End Function
+        Function List() As ActionResult
+            Dim manager = New ProductManager
+            Dim products = manager.GetAll()
+            Return View(products)
+
+
+        End Function
     End Class
 End Namespace
