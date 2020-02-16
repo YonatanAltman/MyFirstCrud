@@ -6,8 +6,11 @@ Namespace Controllers
 
         ' GET: Product
         Function Index() As ActionResult
+            Dim manager = New ProductManager()
 
-            Return View()
+            Dim products = manager.GetAll()
+
+            Return View(products)
         End Function
     End Class
 End Namespace
