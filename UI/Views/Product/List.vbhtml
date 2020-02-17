@@ -17,7 +17,7 @@
          <td>@Product.Price</td>
          <td>
              @Html.ActionLink("Edit", "Edit", New With {.id = Product.CatalogID})
-             Html.ActionLink("Details", "Details", New With {.id = Product.CatalogID})
+             @Html.ActionLink("Details", "Details", New With {.id = Product.CatalogID})
     
          </td>
     </tr>

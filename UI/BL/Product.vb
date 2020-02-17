@@ -1,4 +1,7 @@
-﻿Public Class Product
+﻿Imports System.ComponentModel.DataAnnotations
+
+Public Class Product
+    <Display(Name:="Crazy Catalog")>
     Public CatalogID As String
     Public Name As String
     Public Price As Double

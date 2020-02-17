@@ -34,4 +34,18 @@
 
     End Function
 
+    Sub UpdateProduct(product As Product)
+        'For Each product In ProductList
+        '    If (product.CatalogID = catalogId) Then
+        '        Return product
+
+        '    End If
+        'Next
+        Dim temp = ProductList.Find(Function(p) p.CatalogID = product.CatalogID)
+        temp = product
+
+
+    End Sub
+
+
 End Class
