@@ -76,14 +76,19 @@ Namespace Controllers
         End Function
 
         Function ConvertCollectioinToFriend(collection As FormCollection) As FriendVM
-            Dim _friend = New FriendVM(collection("Name"),
+            Dim _friend = New FriendVM(2, collection("Name"),
                                        collection("Email"),
                                        collection("Age"))
+            ' SOME OOP EXAMPLE
 
             Dim email = _friend.Email ' get Email()
             _friend.Email = "yonatan" ' set Email() => Error
             _friend.Email = "yonatan@yaltman" ' get Email() => Good
-            _friend.ID = "yonatan@yaltman" ' get Email() => Good
+            '    _friend.ID = 1 ' get Email() => error
+            Dim id = _friend.ID ' get Email() => Good
+
+
+
             'Dim _friend = New FriendVM()
             '_friend.Name = collection("Name")
             '_friend.Email = collection("Email")
