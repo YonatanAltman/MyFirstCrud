@@ -145,8 +145,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="BL\FriendVM.vb" />
     <Compile Include="BL\Product.vb" />
     <Compile Include="BL\ProductManager.vb" />
+    <Compile Include="Controllers\FriendController.vb" />
     <Compile Include="Controllers\ProductController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +200,7 @@
     <Content Include="Views\Product\Index.vbhtml" />
     <Content Include="Views\Product\List.vbhtml" />
     <Content Include="Views\Product\Edit.vbhtml" />
+    <Content Include="Views\Friend\Create.vbhtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
