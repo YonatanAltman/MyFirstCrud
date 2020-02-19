@@ -201,6 +201,7 @@
     <Content Include="Views\Product\List.vbhtml" />
     <Content Include="Views\Product\Edit.vbhtml" />
     <Content Include="Views\Friend\Create.vbhtml" />
+    <Content Include="Views\Friend\Index.vbhtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

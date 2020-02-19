@@ -18,7 +18,9 @@ Namespace Controllers
         End Function
 
         ' GET: Friend/Create
+        <HttpGet()>
         Function Create() As ActionResult
+            TempData("message") = "Edit!"
             Return View()
         End Function
 
@@ -27,9 +29,14 @@ Namespace Controllers
         Function Create(ByVal collection As FormCollection) As ActionResult
             Try
                 ' TODO: Add insert logic here
+                Dim _friend = New FriendVM(collection)
+
+                TempData("message") = _friend
 
                 Return RedirectToAction("Index")
             Catch
+                TempData("message") = "Error!"
+
                 Return View()
             End Try
         End Function
@@ -67,5 +74,24 @@ Namespace Controllers
                 Return View()
             End Try
         End Function
+
+        Function ConvertCollectioinToFriend(collection As FormCollection) As FriendVM
+            Dim _friend = New FriendVM(collection("Name"),
+                                       collection("Email"),
+                                       collection("Age"))
+
+            Dim email = _friend.Email ' get Email()
+            _friend.Email = "yonatan" ' set Email() => Error
+            _friend.Email = "yonatan@yaltman" ' get Email() => Good
+            _friend.ID = "yonatan@yaltman" ' get Email() => Good
+            'Dim _friend = New FriendVM()
+            '_friend.Name = collection("Name")
+            '_friend.Email = collection("Email")
+            '_friend.Age = collection("Age")
+
+            Return _friend
+
+        End Function
+
     End Class
 End Namespace
