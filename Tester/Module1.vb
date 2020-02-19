@@ -1,16 +1,11 @@
-﻿Imports BL
-
+﻿
 Module Module1
 
     Sub Main()
         Console.WriteLine("Hello")
-        Dim manager = New ProductManager()
+        Dim _f1 = New FriendVM(1, "Yonatan", "t@dd", "3")
 
-        Dim products = manager.GetAll()
-
-        For Each product In products
-            Console.WriteLine(product)
-        Next
+        Console.WriteLine(_f1)
 
 
 
