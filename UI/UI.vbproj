@@ -145,10 +145,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="Models\UserVM.vb" />
     <Compile Include="BL\FriendVM.vb" />
     <Compile Include="BL\Product.vb" />
     <Compile Include="BL\ProductManager.vb" />
     <Compile Include="Controllers\FriendController.vb" />
+    <Compile Include="Controllers\HomeController.vb" />
+    <Compile Include="Controllers\LoginController.vb" />
     <Compile Include="Controllers\ProductController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,6 +205,8 @@
     <Content Include="Views\Product\Edit.vbhtml" />
     <Content Include="Views\Friend\Create.vbhtml" />
     <Content Include="Views\Friend\Index.vbhtml" />
+    <Content Include="Views\Home\Index.vbhtml" />
+    <Content Include="Views\Login\Index.vbhtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -211,7 +216,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
