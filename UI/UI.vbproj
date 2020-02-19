@@ -147,10 +147,12 @@
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="BL\Product.vb" />
     <Compile Include="BL\ProductManager.vb" />
+    <Compile Include="Code\SessionManger.vb" />
     <Compile Include="Controllers\ProductController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Friend.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -207,7 +209,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

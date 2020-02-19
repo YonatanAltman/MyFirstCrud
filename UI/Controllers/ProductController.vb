@@ -6,6 +6,17 @@ Namespace Controllers
 
         ' GET: Product
         Function Index() As ActionResult
+
+
+            SessionManager.Counter = SessionManager.Counter + 1
+
+            Dim counter = SessionManager.Counter
+
+
+
+
+            Dim friends = SessionManager.FriendVMList
+
             Dim manager = New ProductManager()
 
             Dim products = manager.GetAll()
@@ -21,6 +32,9 @@ Namespace Controllers
         End Function
         <HttpPost>
         Function Edit(collection As FormCollection) As ActionResult
+
+
+
             Dim manager = New ProductManager()
             Dim id = collection("CatalogID")
             Dim product = manager.GetProduct(id)
