@@ -1,5 +1,6 @@
 ﻿
 Public Class FriendVM
+    Public Shared CourseName As String = "Academka"
 
     Private _id As Integer
     Private _email As String

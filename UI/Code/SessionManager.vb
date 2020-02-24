@@ -1,5 +1,31 @@
-﻿Public Class ProductManager
-    Private ProductList As New List(Of Product) From {
+﻿Public Class SessionManager
+    Const _USER As String = "Usr"
+    Const _USER_ROLE As String = "USER"
+    Const _MANAGER_ROLE As String = "MANAGER"
+
+    Private Shared _session As SessionState.HttpSessionState
+    Private Shared _products As List(Of Product)
+    Private Shared _users As List(Of UserVM)
+    Private Shared ReadOnly Property Session() As SessionState.HttpSessionState
+        Get
+
+            If _session Is Nothing Then
+                _session = HttpContext.Current.Session
+
+            End If
+
+
+            Return _session
+        End Get
+
+    End Property
+
+
+    Public Shared ReadOnly Property Products() As List(Of Product)
+        Get
+
+            If _products Is Nothing Then
+                _products = New List(Of Product) From {
         New Product("123-epr", "Samsung Galaxy S10 Plus", 1500, True, "https://cellcomshop.cellcom.co.il/pub/media/catalog/product/cache/b8e43b67ccbb6ff8f872deb3a434a8cc/s/a/samsungs10_-white-front_1_2.png"),
         New Product("142-epr", "iPhone 11", 1670, True, "https://cellcomshop.cellcom.co.il/pub/media/catalog/product/cache/b8e43b67ccbb6ff8f872deb3a434a8cc/i/p/iphone_11_pro_s_2.png"),
         New Product("144-epr", "Samsung Galaxy Note 10 Plus", 1200, True, "https://cellcomshop.cellcom.co.il/pub/media/catalog/product/cache/b8e43b67ccbb6ff8f872deb3a434a8cc/8/_/8_1.png"),
@@ -14,40 +40,51 @@
         New Product("160-epr", "Google Pixel 3 XL", 1900, True, "https://fdn2.gsmarena.com/vv/pics/google/google-pixel-3xl-4.jpg")
     }
 
-
-    Sub New()
-
-    End Sub
-
-    Function GetAll() As List(Of Product)
-        Return SessionManager.Products
-
-    End Function
-    Function GetProduct(catalogId As String) As Product
-        'For Each product In ProductList
-        '    If (product.CatalogID = catalogId) Then
-        '        Return product
-
-        '    End If
-        'Next
-        Dim products = SessionManager.Products
-        Return products.Find(Function(p) p.CatalogID = catalogId)
-
-    End Function
-
-    Sub UpdateProduct(product As Product)
-        'For Each product In ProductList
-        '    If (product.CatalogID = catalogId) Then
-        '        Return product
-
-        '    End If
-        'Next
-
-        Dim temp = SessionManager.Products.Find(Function(p) p.CatalogID = product.CatalogID)
-        temp = product
+            End If
 
 
-    End Sub
+            Return _products
+        End Get
+
+    End Property
+
+    Public Shared ReadOnly Property Users() As List(Of UserVM)
+        Get
+            Dim userRole = New List(Of String) From {_USER_ROLE}
+            Dim managerRole = New List(Of String) From {_USER_ROLE, _MANAGER_ROLE}
+            If _users Is Nothing Then
+                _users = New List(Of UserVM) From {
+          New UserVM(1, "Yonatan", "Yonatan@Epr.co.il", 38, userRole),
+          New UserVM(2, "Harel", "Harel@Epr.co.il", 38, userRole),
+          New UserVM(1, "Orya", "Orya@Epr.co.il", 38, managerRole)
+                }
+
+
+            End If
+
+
+            Return _users
+        End Get
+
+    End Property
+
+    Public Shared Property User() As UserVM
+        Get
+            Return Session(_USER)
+        End Get
+        Set(ByVal usr As UserVM)
+            'usr.Age = 40
+
+            Session(_USER) = usr
+        End Set
+    End Property
+
+    Public Shared ReadOnly Property IsConnect() As Boolean
+        Get
+            Return User IsNot Nothing
+        End Get
+
+    End Property
 
 
 End Class

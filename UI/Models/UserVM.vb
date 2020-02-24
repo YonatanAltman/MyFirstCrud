@@ -27,14 +27,15 @@ Public Class UserVM
     Public Name As String
 
     Public Age As String
+    Public Roles As List(Of String)
 
     Public Sub New()
 
 
     End Sub
-    Public Sub New(id As Integer, name As String, email As String, age As String)
+    Public Sub New(id As Integer, name As String, email As String, age As String, roles As List(Of String))
         Me._id = id
-
+        Me.Roles = roles
         Me.Name = name
         Me.Email = email
         Me.Age = age

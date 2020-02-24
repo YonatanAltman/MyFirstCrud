@@ -117,6 +117,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Login\index.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -145,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="Code\SessionManager.vb" />
     <Compile Include="Models\UserVM.vb" />
     <Compile Include="BL\FriendVM.vb" />
     <Compile Include="BL\Product.vb" />
@@ -207,6 +209,7 @@
     <Content Include="Views\Friend\Index.vbhtml" />
     <Content Include="Views\Home\Index.vbhtml" />
     <Content Include="Views\Login\Index.vbhtml" />
+    <Content Include="Views\Home\Bootstrap.vbhtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

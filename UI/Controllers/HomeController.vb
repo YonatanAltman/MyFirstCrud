@@ -6,15 +6,20 @@ Namespace Controllers
 
         ' GET: Home
         Function Index() As ActionResult
-            Dim alwaysTrue = Session IsNot Nothing ' => always true
-            Dim isUserLogin = Session("User") IsNot Nothing
 
-
-            If isUserLogin Then
+            '    If isUserLogin Then
+            If SessionManager.IsConnect Then
                 Return View()
 
             End If
             Return RedirectToAction("Index", "Login")
+
+        End Function
+        ' GET: Home
+        Function Bootstrap() As ActionResult
+
+
+            Return View()
 
         End Function
 
