@@ -54,19 +54,34 @@ Namespace Controllers
         End Function
 
         ' POST: api/User
-        Public Function PostValue(<FromBody()> ByVal request As ReauestLogin) As String
+        Public Function PostValue(<FromBody()> ByVal request As RequestLogin) As LoginResponse
+            Dim user As User = New User()
+            user.Email = "yonatan@yaltman.com"
+            user.FirstName = "Yonatan"
+            user.LastName = "Altman"
+
+
+            Dim response As LoginResponse = New LoginResponse()
+            response.User = user
+
+
+
             Dim loginError = "Email or Password is incorrect"
             Try
                 Dim email = request.Email.ToString()
 
                 Dim password = request.Password.ToString()
 
-                If password = "1234" Then
+                If email = user.Email & password = user.Password Then
+                    response.Rc = 0
+                    response.Desc = "Hello " + email
 
-                    Return "Hello " + email
+                    Return response
 
                 End If
 
+                response.Rc = 99
+                response.Desc = loginError
 
 
 
@@ -74,7 +89,7 @@ Namespace Controllers
             Catch ex As Exception
                 ' Write to log that we had error
             End Try
-            Return loginError
+            Return response
 
 
 
@@ -94,11 +109,34 @@ Namespace Controllers
 
 
 
-    Public Class ReauestLogin
+    Public Class RequestLogin
         Public Email As String
         Public Password As String
 
 
 
     End Class
+    Public Class LoginResponse
+        Inherits Response
+
+
+
+
+    End Class
+    Public Class Response
+        Public Rc As Integer
+        Public Desc As String
+        Public User As User
+    End Class
+
+    Public Class User
+        Public FirstName As Integer
+        Public LastName As String
+        Public Email As String
+        Public Password As String
+
+    End Class
+
+
+
 End Namespace
