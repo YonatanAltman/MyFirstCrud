@@ -15,6 +15,15 @@ Namespace Controllers
                 "Orya",
                 "Uri"
             }
+            Try
+                Dim name1 = arr(2).ToString()
+                Dim name2 = arr(7).ToString()
+
+            Catch ex As Exception
+                Dim userError = ex.Message
+
+            End Try
+
 
 
             Return arr
@@ -22,7 +31,26 @@ Namespace Controllers
 
         ' GET: api/User/5
         Public Function GetValue(ByVal id As Integer) As String
-            Return "value"
+            Dim name As String
+            Dim arr As List(Of String) = New List(Of String)() From {
+                "Yonatan",
+                "Maayan",
+                "Harry",
+                "Orya",
+                "Uri"
+            }
+            Try
+                name = arr(id).ToString()
+
+
+            Catch ex As Exception
+                name = ex.Message
+                name = "המשתמש אינו קיים"
+
+            End Try
+
+
+            Return name
         End Function
 
         ' POST: api/User
