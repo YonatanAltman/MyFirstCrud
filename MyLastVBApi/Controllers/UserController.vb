@@ -55,27 +55,30 @@ Namespace Controllers
 
         ' POST: api/User
         Public Function PostValue(<FromBody()> ByVal request As RequestLogin) As LoginResponse
-            Dim user As User = New User()
-            user.Email = "yonatan@yaltman.com"
-            user.FirstName = "Yonatan"
-            user.LastName = "Altman"
+            Dim loginError = "Email or Password is incorrect"
+            ' Go to DB and get users
+            Dim user As User = New User With {
+                .Email = "yonatan@yaltman.com",
+            .FirstName = "Yonatan",
+            .LastName = "Altman",
+            .Password = "1234"
+            }
 
 
             Dim response As LoginResponse = New LoginResponse()
-            response.User = user
 
 
 
-            Dim loginError = "Email or Password is incorrect"
+
             Try
                 Dim email = request.Email.ToString()
 
                 Dim password = request.Password.ToString()
 
-                If email = user.Email & password = user.Password Then
+                If email.ToLower() = user.Email.ToLower() And password = user.Password Then
                     response.Rc = 0
                     response.Desc = "Hello " + email
-
+                    response.User = user
                     Return response
 
                 End If
@@ -118,7 +121,14 @@ Namespace Controllers
     End Class
     Public Class LoginResponse
         Inherits Response
+        Public User As User
 
+
+
+    End Class
+    Public Class ItemsResponse
+        Inherits Response
+        Public Items As User()
 
 
 
@@ -126,11 +136,11 @@ Namespace Controllers
     Public Class Response
         Public Rc As Integer
         Public Desc As String
-        Public User As User
+
     End Class
 
     Public Class User
-        Public FirstName As Integer
+        Public FirstName As String
         Public LastName As String
         Public Email As String
         Public Password As String
