@@ -54,9 +54,31 @@ Namespace Controllers
         End Function
 
         ' POST: api/User
-        Public Sub PostValue(<FromBody()> ByVal value As String)
+        Public Function PostValue(<FromBody()> ByVal request As ReauestLogin) As String
+            Dim loginError = "Email or Password is incorrect"
+            Try
+                Dim email = request.Email.ToString()
 
-        End Sub
+                Dim password = request.Password.ToString()
+
+                If password = "1234" Then
+
+                    Return "Hello " + email
+
+                End If
+
+
+
+
+
+            Catch ex As Exception
+                ' Write to log that we had error
+            End Try
+            Return loginError
+
+
+
+        End Function
 
         ' PUT: api/User/5
         Public Sub PutValue(ByVal id As Integer, <FromBody()> ByVal value As String)
@@ -67,5 +89,16 @@ Namespace Controllers
         Public Sub DeleteValue(ByVal id As Integer)
 
         End Sub
+    End Class
+
+
+
+
+    Public Class ReauestLogin
+        Public Email As String
+        Public Password As String
+
+
+
     End Class
 End Namespace
