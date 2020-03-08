@@ -3,21 +3,21 @@
 <div class="card">
     <div class="card-body col-12">
         <h5 class="card-title">Search Pets</h5>
-        <form action="/" method="post">
+        <form action="/"  id="form">
 
             <div class="form-group col-lg-3 col-md-4">
                 <label for="from">From Price</label>
-                <input type="number" name="from" class="form-control" value="" />
+                <input type="number" name="fromPrice" class="form-control" value="0" />
             </div>
 
             <div class="form-group col-lg-3 col-md-4">
                 <label for="from">To Price</label>
-                <input type="number" name="to" class="form-control" value="" />
+                <input type="number" name="toPrice" class="form-control" value="100" />
             </div>
 
        
 
-            <button class="btn-default" type="submit">Search</button>
+            <button class="btn-default" id="btn-submit" type="submit">Search</button>
         </form>
     </div>
 </div>
