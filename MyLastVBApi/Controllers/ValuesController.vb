@@ -13,6 +13,13 @@ Public Class ValuesController
     Public Function GetValue(ByVal id As Integer) As String
         Return "value"
     End Function
+    Public Function GetList(ByVal FromPrice As Integer, ByVal ToPrice As Integer) As String
+
+        Dim message = String.Format("{0} - {1}", FromPrice, ToPrice)
+        Return message
+
+
+    End Function
 
     ' POST api/values
     Public Sub PostValue(<FromBody()> ByVal value As String)
